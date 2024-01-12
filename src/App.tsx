@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router";
-import { Home } from "./pages";
+import { Home, NotFound } from "./pages";
 import "./App.css";
 
 function App() {
@@ -7,6 +7,7 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );
