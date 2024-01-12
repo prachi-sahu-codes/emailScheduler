@@ -4,6 +4,6 @@ export interface Email {
   description: string;
   subject: string;
   frequency: string;
-  repeat: string;
+  repeat: string[];
   time: string;
 }
