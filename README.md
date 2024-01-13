@@ -1,30 +1,47 @@
-# React + TypeScript + Vite
+<h1 align="center">Email Scheduler</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An email scheduler app which allows users to efficiently manage their email with a seamless and intuitive user interface.
 
-Currently, two official plugins are available:
+Users can explore the available email schedules, easily add new schedule, edit it and also delete it easily. Users can search email schedules by their title.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Key Features
 
-## Expanding the ESLint configuration
+- Home page displaying all email schedules.
+- Edit or add new schedules effortlessly.
+- Delete schedules easily.
+- Comprehensive information in an individual schedule detail modal.
+- Tabulated schedule data for a streamlined listing experience.
+- Email search with a debounced feature for improved user experience.
+- 404 page for handling page not found issue.
+- Toast notifications and loaders for user feedback.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Key Dependencies
 
-- Configure the top-level `parserOptions` property like this:
+- **React JS:** A robust JavaScript library known for its component-based architecture and seamless UI rendering.
+- **React Router v6:** For dynamic routing and seamless navigation within the application
+- **Redux Toolkit:** State management library offering simplified and efficient tools for managing the application's state.
+- **Axios:** For making network requests, providing a convenient and efficient way to handle API interactions.
+- **React Hooks:** React Hooks like useState(), useEffect() to enable efficient state management and enhanced user interactions.
+- **Tailwind CSS:** For custom styling, ensuring a unique and visually appealing user interface design.
+- **React Icons:** For enhancing the visual presentation.
+- **Maerial UI:** For building modern and visually appealing website.
+- **React Toastify:** to provide informative and intuitive feedback to users.
+- **React Loader Spinner:** A loading spinner component for visual feedback during asynchronous operations.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+## Installation and Usage Instructions
+
+To clone and run this application. From your command line:
+
 ```
+# Clone this repository
+$ git clone https://github.com/prachi-sahu-codes/emailScheduler.git
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+# Go into the repository
+$ cd emailScheduler
+
+# Install dependencies
+$ npm install
+
+# Run the app
+$ npm run dev
+```
