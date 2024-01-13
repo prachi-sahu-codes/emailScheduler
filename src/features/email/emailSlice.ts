@@ -12,7 +12,6 @@ import {
 
 export interface EmailState {
   allEmails: Email[];
-  loading: boolean;
   error: string | undefined;
   detailSchedule: Email | object;
   searchValue: string;
@@ -22,7 +21,6 @@ export interface EmailState {
 
 const initialState: EmailState = {
   allEmails: [],
-  loading: false,
   error: "",
   detailSchedule: {},
   searchValue: "",
