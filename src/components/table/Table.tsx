@@ -13,7 +13,9 @@ const TableProvider = ({ data }: { data: Email[] }) => {
       </tr>
 
       {data.map((schedule: Email) => (
-        <TableRow schedule={schedule} />
+        <div key={schedule._id}>
+          <TableRow schedule={schedule} key={schedule._id} />
+        </div>
       ))}
     </table>
   );

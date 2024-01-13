@@ -12,7 +12,7 @@ const TableRow = ({ schedule }: { schedule: Email }) => {
       ? `Monthly on ${repeat[0]} at ${time}`
       : `Weekly on ${repeat.join(", ")} at ${time}`;
   return (
-    <tr className="min-w-[695px] bg-[#fff] text-[14px] border border-[#F3F3F9] cursor-pointer hover:bg-[#fbfbff] active:bg-[#fff] ">
+    <tr className="min-w-[695px] bg-[#fff] text-[14px] border border-[#F3F3F9] cursor-pointer hover:bg-[#fbfbff] active:bg-[#fff]">
       <td className={`${rowStyle}`}>{title}</td>
       <td className={`${rowStyle} h-[55px] line-clamp-2`}>{description}</td>
       <td className={`${rowStyle}`}>{subject}</td>
