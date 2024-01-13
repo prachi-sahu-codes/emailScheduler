@@ -15,7 +15,7 @@ export interface EmailState {
   loading: boolean;
   error: string | undefined;
   detailSchedule: Email | object;
-  searchTerm: string;
+  searchValue: string;
   searchResults: Email[];
   status: "loading" | "success" | "error";
 }
@@ -25,7 +25,7 @@ const initialState: EmailState = {
   loading: false,
   error: "",
   detailSchedule: {},
-  searchTerm: "",
+  searchValue: "",
   searchResults: [],
   status: "success",
 };
@@ -33,7 +33,11 @@ const initialState: EmailState = {
 export const emailSlice = createSlice({
   name: "email",
   initialState,
-  reducers: {},
+  reducers: {
+    searchTermUpdate: (state, action) => {
+      state.searchValue = action.payload;
+    },
+  },
   extraReducers: (builder: ActionReducerMapBuilder<EmailState>) => {
     builder
       // getAllSchedules
@@ -129,5 +133,7 @@ export const emailSlice = createSlice({
       });
   },
 });
+
+export const { searchTermUpdate } = emailSlice.actions;
 
 export default emailSlice.reducer;
