@@ -13,7 +13,7 @@ import {
 export interface EmailState {
   allEmails: Email[];
   error: string | undefined;
-  detailSchedule: Email | object;
+  detailSchedule: Email[] | [];
   searchValue: string;
   searchResults: Email[];
   status: "loading" | "success" | "error";
@@ -22,7 +22,7 @@ export interface EmailState {
 const initialState: EmailState = {
   allEmails: [],
   error: "",
-  detailSchedule: {},
+  detailSchedule: [],
   searchValue: "",
   searchResults: [],
   status: "success",
