@@ -4,15 +4,17 @@ import "./App.css";
 import { useEffect } from "react";
 import { getAllSchedules } from "./features/email/action";
 import { useAppDispatch } from "./app/hooks";
+import { Toaster } from "./components";
 
 function App() {
   const dispatch = useAppDispatch();
   useEffect(() => {
     dispatch(getAllSchedules());
   }, []);
- 
+
   return (
     <>
+      <Toaster />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="*" element={<NotFound />} />
