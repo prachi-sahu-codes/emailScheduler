@@ -24,7 +24,7 @@ Users can explore the available email schedules, easily add new schedule, edit i
 - **React Hooks:** React Hooks like useState(), useEffect() to enable efficient state management and enhanced user interactions.
 - **Tailwind CSS:** For custom styling, ensuring a unique and visually appealing user interface design.
 - **React Icons:** For enhancing the visual presentation.
-- **Maerial UI:** For building modern and visually appealing website.
+- **Material UI:** For building modern and visually appealing website.
 - **React Toastify:** to provide informative and intuitive feedback to users.
 - **React Loader Spinner:** A loading spinner component for visual feedback during asynchronous operations.
 
