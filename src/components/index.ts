@@ -5,6 +5,7 @@ import PrimaryBtn from "./button/PrimaryBtn";
 import ModalProvider from "./modalProvider/ModalProvider";
 import ScheduleFormModal from "./modals/scheduleFormModal/ScheduleFormModal";
 import Toaster from "./toast/Toaster";
+import Loader from "./loader/Loader";
 
 export {
   TableProvider,
@@ -13,5 +14,6 @@ export {
   PrimaryBtn,
   ModalProvider,
   ScheduleFormModal,
-  Toaster
+  Toaster,
+  Loader,
 };

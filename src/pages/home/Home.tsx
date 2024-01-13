@@ -3,7 +3,7 @@ import { ActionBar, PrimaryBtn, TableProvider } from "../../components";
 import { searchTermUpdate } from "../../features/email/emailSlice";
 
 const Home = () => {
-  const { allEmails, searchResults, searchValue } = useAppSelector(
+  const { allEmails, searchResults, searchValue, status } = useAppSelector(
     (state) => state.email
   );
   const dispatch = useAppDispatch();
@@ -24,11 +24,15 @@ const Home = () => {
           {arrList.length > 0 ? (
             <TableProvider data={arrList} />
           ) : (
-            <div className="flex items-center gap-4">
-              <PrimaryBtn style="px-4" clickHandler={clickHandler}>
-                Clear Filter
-              </PrimaryBtn>
-              <p>No schedules found!</p>
+            <div>
+              {status !== "loading" && (
+                <div className="flex items-center gap-4">
+                  <PrimaryBtn style="px-4" clickHandler={clickHandler}>
+                    Clear Filter
+                  </PrimaryBtn>
+                  <p>No schedules found!</p>
+                </div>
+              )}
             </div>
           )}
         </div>
