@@ -3,7 +3,8 @@ import TableRow from "./TableRow";
 
 const TableProvider = ({ data }: { data: Email[] }) => {
   return (
-    <table id="schedules" className="text-left">
+    <div className="calcHeight overflow-y-auto">
+      <table id="schedules" className="text-left">
       <tr className="h-[42px] bg-[#e1dee9] text-[14px] text-[#333]">
         <th className="px-[24px]">Title</th>
         <th className="px-[24px]">Description</th>
@@ -13,9 +14,10 @@ const TableProvider = ({ data }: { data: Email[] }) => {
       </tr>
 
       {data.map((schedule: Email) => (
-          <TableRow schedule={schedule} key={schedule._id} />
+        <TableRow schedule={schedule} key={schedule._id} />
       ))}
     </table>
+    </div>
   );
 };
 
