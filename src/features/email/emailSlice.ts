@@ -1,4 +1,5 @@
 import { createSlice, ActionReducerMapBuilder } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 import { Email } from "../../types/types";
 import {
   getAllSchedules,
@@ -14,7 +15,7 @@ export interface EmailState {
   loading: boolean;
   error: string | undefined;
   detailSchedule: Email | object;
-  searchTerm: string;
+  searchValue: string;
   searchResults: Email[];
   status: "loading" | "success" | "error";
 }
@@ -24,7 +25,7 @@ const initialState: EmailState = {
   loading: false,
   error: "",
   detailSchedule: {},
-  searchTerm: "",
+  searchValue: "",
   searchResults: [],
   status: "success",
 };
@@ -32,7 +33,11 @@ const initialState: EmailState = {
 export const emailSlice = createSlice({
   name: "email",
   initialState,
-  reducers: {},
+  reducers: {
+    searchTermUpdate: (state, action) => {
+      state.searchValue = action.payload;
+    },
+  },
   extraReducers: (builder: ActionReducerMapBuilder<EmailState>) => {
     builder
       // getAllSchedules
@@ -67,10 +72,12 @@ export const emailSlice = createSlice({
       })
       .addCase(addNewScheduleAsync.fulfilled, (state, action) => {
         state.status = "success";
+        toast.success("New schedule added successfully!");
         state.allEmails.push(action.payload);
       })
       .addCase(addNewScheduleAsync.rejected, (state, action) => {
         state.status = "error";
+        toast.error("Error in adding new schedule!");
         state.error = action.error.message;
       })
 
@@ -80,6 +87,7 @@ export const emailSlice = createSlice({
       })
       .addCase(updateScheduleAsync.fulfilled, (state, action) => {
         state.status = "success";
+        toast.success("Schedule updated successfully!");
         const updatedData = action.payload;
         const index = state.allEmails.findIndex(
           (email) => email._id === updatedData._id
@@ -90,6 +98,7 @@ export const emailSlice = createSlice({
       })
       .addCase(updateScheduleAsync.rejected, (state, action) => {
         state.status = "error";
+        toast.error("Error in updating schedule!");
         state.error = action.error.message;
       })
 
@@ -99,12 +108,14 @@ export const emailSlice = createSlice({
       })
       .addCase(deleteScheduleAsync.fulfilled, (state, action) => {
         state.status = "success";
+        toast.success("Schedule deleted successfully!");
         state.allEmails = state.allEmails.filter(
           (email) => email._id !== action.payload._id
         );
       })
       .addCase(deleteScheduleAsync.rejected, (state, action) => {
         state.status = "error";
+        toast.error("Error in deleting schedule!");
         state.error = action.error.message;
       })
 
@@ -122,5 +133,7 @@ export const emailSlice = createSlice({
       });
   },
 });
+
+export const { searchTermUpdate } = emailSlice.actions;
 
 export default emailSlice.reducer;

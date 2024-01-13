@@ -11,10 +11,14 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: #414141;
+  background: #bebebe;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #0c121e;
+  background: #717171;
   border-radius: 8px;
+}
+
+.calcHeight {
+  height: calc(100vh - 201px);
 }
