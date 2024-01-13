@@ -1,6 +1,5 @@
 import { useAppSelector } from "../../app/hooks";
-import { PrimaryBtn, SearchBar, TableProvider } from "../../components";
-import { MdAddCircleOutline } from "react-icons/md";
+import { ActionBar, TableProvider } from "../../components";
 
 const Home = () => {
   const { allEmails } = useAppSelector((state) => state.email);
@@ -11,13 +10,7 @@ const Home = () => {
       <div className="w-full">
         <div className="w-full h-[40px] bg-[#D8D2DE]"></div>
         <div className="py-[20px] px-[24px]">
-          <div className="flex items-center justify-between pb-[31px]">
-            <SearchBar />
-            <PrimaryBtn color style="flex gap-[8px]">
-              <MdAddCircleOutline className="text-[16px]"/>
-              <p>Add</p>
-            </PrimaryBtn>
-          </div>
+          <ActionBar />
           <TableProvider data={allEmails} />
         </div>
       </div>
