@@ -85,7 +85,9 @@ const ScheduleFormModal = ({
 
   return (
     <ModalProvider open={open} handleClose={handleClose} style={style}>
-      <h3 className="pb-[10px] text-[16px] font-semibold">Add Schedule</h3>
+      <h3 className="pb-[10px] text-[16px] font-semibold">
+        {schedule ? "Edit" : "Add"} Schedule
+      </h3>
       <form onSubmit={(e) => e.preventDefault()}>
         <div className="flex items-center gap-[16px] mb-[12px]">
           <p className={`${titleStyle}`}>Title</p>
