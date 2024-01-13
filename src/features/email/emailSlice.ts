@@ -1,4 +1,5 @@
 import { createSlice, ActionReducerMapBuilder } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
 import { Email } from "../../types/types";
 import {
   getAllSchedules,
@@ -67,10 +68,12 @@ export const emailSlice = createSlice({
       })
       .addCase(addNewScheduleAsync.fulfilled, (state, action) => {
         state.status = "success";
+        toast.success("New schedule added successfully!");
         state.allEmails.push(action.payload);
       })
       .addCase(addNewScheduleAsync.rejected, (state, action) => {
         state.status = "error";
+        toast.error("Error in adding new schedule!");
         state.error = action.error.message;
       })
 
@@ -80,6 +83,7 @@ export const emailSlice = createSlice({
       })
       .addCase(updateScheduleAsync.fulfilled, (state, action) => {
         state.status = "success";
+        toast.success("Schedule updated successfully!");
         const updatedData = action.payload;
         const index = state.allEmails.findIndex(
           (email) => email._id === updatedData._id
@@ -90,6 +94,7 @@ export const emailSlice = createSlice({
       })
       .addCase(updateScheduleAsync.rejected, (state, action) => {
         state.status = "error";
+        toast.error("Error in updating schedule!");
         state.error = action.error.message;
       })
 
@@ -99,12 +104,14 @@ export const emailSlice = createSlice({
       })
       .addCase(deleteScheduleAsync.fulfilled, (state, action) => {
         state.status = "success";
+        toast.success("Schedule deleted successfully!");
         state.allEmails = state.allEmails.filter(
           (email) => email._id !== action.payload._id
         );
       })
       .addCase(deleteScheduleAsync.rejected, (state, action) => {
         state.status = "error";
+        toast.error("Error in deleting schedule!");
         state.error = action.error.message;
       })
 
