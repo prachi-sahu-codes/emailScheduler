@@ -4,6 +4,11 @@ import { ModalProvider, PrimaryBtn } from "../..";
 import { Email } from "../../../types/types";
 import { dayArr, timeArr } from "../../../utils/data";
 import RepeatCheckBox from "./RepeatCheckBox";
+import { useAppDispatch } from "../../../app/hooks";
+import {
+  addNewScheduleAsync,
+  updateScheduleAsync,
+} from "../../../features/email/action";
 
 const style = {
   position: "absolute",
@@ -35,6 +40,7 @@ const ScheduleFormModal = ({
     repeat: schedule?.repeat ?? [],
     time: schedule?.time ?? "",
   });
+  const dispatch = useAppDispatch();
 
   const titleStyle = "w-[72px] text-[13px] shrink-0";
   const inputStyle =
@@ -64,7 +70,13 @@ const ScheduleFormModal = ({
       formData.time !== "";
 
     if (requiredFieldsFilled) {
-      console.log("submit");
+      if (schedule) {
+        dispatch(
+          updateScheduleAsync({ id: schedule?._id, scheduleData: formData })
+        );
+      } else {
+        dispatch(addNewScheduleAsync(formData));
+      }
       handleClose(e);
     } else {
       toast.error("Please fill in all required fields!");
