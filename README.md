@@ -4,6 +4,9 @@ An email scheduler app which allows users to efficiently manage their email with
 
 Users can explore the available email schedules, easily add new schedule, edit it and also delete it easily. Users can search email schedules by their title.
 
+## Live Demo
+https://www.loom.com/share/1fe4412fe5b84f45abd8d152c86cb187?sid=9bb5faff-e7a0-456a-8516-6124a36961c2
+
 ## Key Features
 
 - Home page displaying all email schedules.
