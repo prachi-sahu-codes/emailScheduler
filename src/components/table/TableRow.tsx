@@ -73,7 +73,10 @@ const TableRow = ({ schedule }: { schedule: Email }) => {
           </div>
           <div
             title="Delete"
-            onClick={() => dispatch(deleteScheduleAsync(schedule?._id))}
+            onClick={(e) => {
+              e.stopPropagation();
+              dispatch(deleteScheduleAsync(schedule?._id));
+            }}
             className="cursor-pointer"
           >
             <RiDeleteBin6Line />
