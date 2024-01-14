@@ -13,7 +13,18 @@ import {
 export interface EmailState {
   allEmails: Email[];
   error: string | undefined;
-  detailSchedule: Email[] | [];
+  detailSchedule:
+    | Email[]
+    | [
+        {
+          title: "";
+          description: "";
+          subject: "";
+          frequency: "";
+          repeat: [];
+          time: "";
+        }
+      ];
   searchValue: string;
   searchResults: Email[];
   status: "loading" | "success" | "error";
@@ -34,6 +45,18 @@ export const emailSlice = createSlice({
   reducers: {
     searchTermUpdate: (state, action) => {
       state.searchValue = action.payload;
+    },
+    emptyDetailSchedule: (state) => {
+      state.detailSchedule = [
+        {
+          title: "",
+          description: "",
+          subject: "",
+          frequency: "",
+          repeat: [],
+          time: "",
+        },
+      ];
     },
   },
   extraReducers: (builder: ActionReducerMapBuilder<EmailState>) => {
@@ -132,6 +155,6 @@ export const emailSlice = createSlice({
   },
 });
 
-export const { searchTermUpdate } = emailSlice.actions;
+export const { searchTermUpdate, emptyDetailSchedule } = emailSlice.actions;
 
 export default emailSlice.reducer;

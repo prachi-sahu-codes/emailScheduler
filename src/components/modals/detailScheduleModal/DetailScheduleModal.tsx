@@ -1,5 +1,6 @@
 import { useEffect } from "react";
-import { ModalProvider, PrimaryBtn } from "../..";
+import { RxCross2 } from "react-icons/rx";
+import { Loader, ModalProvider, PrimaryBtn } from "../..";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import {
   deleteScheduleAsync,
@@ -52,27 +53,41 @@ const DetailScheduleModal = ({
     editModalOpen();
   };
   return (
-    <ModalProvider open={open} handleClose={handleClose} style={style}>
-      <h3 className="pb-[10px] text-[17px] font-bold">
-        {detailSchedule[0]?.title}
-      </h3>
-      <p className="text-[13px] text-semibold">
-        Subject: {detailSchedule[0]?.subject}
-      </p>
-      <p className="text-[13px] py-[8px] text-gray-500">
-        {detailSchedule[0]?.description}
-      </p>
-      <p className="italic text-[14px] pb-[12px]">{scheduleFreq}</p>
+    <div>
+      {detailSchedule[0]?.title ? (
+        <ModalProvider open={open} handleClose={handleClose} style={style}>
+          <div className="relative">
+            <h3 className="pt-1 pb-[10px] text-[17px] font-bold">
+              {detailSchedule[0]?.title}
+            </h3>
+            <p className="text-[13px] text-semibold">
+              Subject: {detailSchedule[0]?.subject}
+            </p>
+            <p className="text-[13px] py-[8px] text-gray-500">
+              {detailSchedule[0]?.description}
+            </p>
+            <p className="italic text-[14px] pb-[12px]">{scheduleFreq}</p>
+            <button
+              className="absolute -top-2 -right-2 text-lg text-gray-400 hover:text-gray-600 cursor-pointer"
+              onClick={(e) => handleClose(e)}
+            >
+              <RxCross2 />
+            </button>
+          </div>
 
-      <div className="flex gap-[16px] justify-end">
-        <PrimaryBtn style="w-[88px]" clickHandler={deleteHandler}>
-          Delete
-        </PrimaryBtn>
-        <PrimaryBtn color style="w-[88px]" clickHandler={editHandler}>
-          Edit
-        </PrimaryBtn>
-      </div>
-    </ModalProvider>
+          <div className="flex gap-[16px] justify-end">
+            <PrimaryBtn style="w-[88px]" clickHandler={deleteHandler}>
+              Delete
+            </PrimaryBtn>
+            <PrimaryBtn color style="w-[88px]" clickHandler={editHandler}>
+              Edit
+            </PrimaryBtn>
+          </div>
+        </ModalProvider>
+      ) : (
+        <Loader />
+      )}
+    </div>
   );
 };
 
