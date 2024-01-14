@@ -14,7 +14,10 @@ const TableRow = ({ schedule }: { schedule: Email }) => {
   const dispatch = useAppDispatch();
   const { status } = useAppSelector((state) => state.email);
 
-  const handleOpen = () => setOpen(true);
+  const handleOpen = (e: any) => {
+    e.stopPropagation();
+    setOpen(true);
+  };
   const handleClose = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     setOpen(false);
@@ -77,7 +80,6 @@ const TableRow = ({ schedule }: { schedule: Email }) => {
               e.stopPropagation();
               dispatch(deleteScheduleAsync(schedule?._id));
             }}
-           
           >
             <RiDeleteBin6Line />
           </div>
@@ -88,14 +90,6 @@ const TableRow = ({ schedule }: { schedule: Email }) => {
           open={open}
           handleClose={handleClose}
           schedule={schedule}
-        />
-      )}
-      {detailOpen && (
-        <DetailScheduleModal
-          open={detailOpen}
-          handleClose={handleDetailClose}
-          id={schedule?._id}
-          editModalOpen={handleOpen}
         />
       )}
     </tr>

@@ -28,7 +28,7 @@ const DetailScheduleModal = ({
   open: boolean;
   handleClose: (e: React.MouseEvent<HTMLButtonElement>) => void;
   id: string;
-  editModalOpen: () => void;
+  editModalOpen: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }) => {
   const dispatch = useAppDispatch();
   const { detailSchedule } = useAppSelector((state) => state.email);
@@ -50,7 +50,7 @@ const DetailScheduleModal = ({
   };
   const editHandler = (e: any) => {
     handleClose(e);
-    editModalOpen();
+    editModalOpen(e);
   };
   return (
     <div>
