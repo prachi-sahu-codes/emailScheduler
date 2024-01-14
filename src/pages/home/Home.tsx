@@ -26,11 +26,19 @@ const Home = () => {
           ) : (
             <div>
               {status !== "loading" && (
-                <div className="flex items-center gap-4">
-                  <PrimaryBtn style="px-4" clickHandler={clickHandler}>
-                    Clear Filter
-                  </PrimaryBtn>
-                  <p>No schedules found!</p>
+                <div>
+                  {allEmails.length > 0 ? (
+                    <div className="flex items-center gap-4">
+                      <PrimaryBtn style="px-4" clickHandler={clickHandler}>
+                        Clear Filter
+                      </PrimaryBtn>
+                      <p>No schedules found!</p>
+                    </div>
+                  ) : (
+                    <div>
+                        <p>No schedules found!</p>
+                    </div>
+                  )}
                 </div>
               )}
             </div>
