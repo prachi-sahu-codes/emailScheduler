@@ -92,6 +92,14 @@ const TableRow = ({ schedule }: { schedule: Email }) => {
           schedule={schedule}
         />
       )}
+      {detailOpen && (
+        <DetailScheduleModal
+          open={detailOpen}
+          handleClose={handleDetailClose}
+          id={schedule?._id}
+          editModalOpen={handleOpen}
+        />
+      )}
     </tr>
   );
 };
