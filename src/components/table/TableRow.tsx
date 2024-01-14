@@ -77,7 +77,7 @@ const TableRow = ({ schedule }: { schedule: Email }) => {
               e.stopPropagation();
               dispatch(deleteScheduleAsync(schedule?._id));
             }}
-            className="cursor-pointer"
+           
           >
             <RiDeleteBin6Line />
           </div>
