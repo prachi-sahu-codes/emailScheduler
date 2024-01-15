@@ -4,6 +4,9 @@ An email scheduler app which allows users to efficiently manage their email with
 
 Users can explore the available email schedules, easily add new schedule, edit it and also delete it easily. Users can search email schedules by their title.
 
+## Backend repository
+ https://github.com/prachi-sahu-codes/schedule-backend
+
 ## Live Demo
 https://www.loom.com/share/22ca56e6475440a480f74e2aca0d2df8?sid=654cb7c4-f316-4ef6-b74a-1959c0da41bd
 
