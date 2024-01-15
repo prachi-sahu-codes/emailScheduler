@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const baseURL =
-  "https://715fa4e4-dafd-4a06-8319-9d50bec3c97c-00-19c4p0tsi76gd.janeway.replit.dev/schedules";
+const baseURL = "https://schedule-backend-kxmw.onrender.com/schedules"
 
 export const getAllScheduleService = () => axios.get(`${baseURL}`);
 
