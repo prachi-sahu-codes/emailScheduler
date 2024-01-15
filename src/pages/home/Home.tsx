@@ -13,7 +13,7 @@ const Home = () => {
   const clickHandler = () => {
     dispatch(searchTermUpdate(""));
   };
- 
+
   return (
     <div className="w-screen h-screen pt-[48px] bg-[#F3F3F9] flex">
       <div className="w-[72px] h-full bg-[#391E5A]"></div>
@@ -22,11 +22,7 @@ const Home = () => {
         <div className={`py-[20px] px-[24px]`}>
           <ActionBar />
           {arrList.length > 0 ? (
-            status === "loading" ? (
-              <Loader />
-            ) : (
-              <TableProvider data={arrList} />
-            )
+            <TableProvider data={arrList} />
           ) : (
             <div>
               {status !== "loading" && (
