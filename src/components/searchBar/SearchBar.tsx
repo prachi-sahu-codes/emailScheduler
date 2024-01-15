@@ -10,15 +10,12 @@ const SearchBar = () => {
   const dispatch = useAppDispatch();
   const [searchTerm, setSearchTerm] = useState(searchValue);
 
-  const changeHandler = (searchTerm: string) => {
-    setSearchTerm(() => searchTerm);
-    dispatch(searchTermUpdate(searchTerm));
+  const changeHandler = (inputSearch: string) => {
+    setSearchTerm(() => inputSearch);
+    dispatch(searchTermUpdate(inputSearch));
   };
-  const debouncedValue = useDebounce(
-    () => dispatch(searchScheduleAsync(searchTerm)),
-    searchTerm,
-    300
-  );
+  
+  useDebounce(() => dispatch(searchScheduleAsync(searchTerm)), searchTerm, 300);
 
   return (
     <div className="w-[300px] h-[38px] bg-white rounded-[4px] flex">
