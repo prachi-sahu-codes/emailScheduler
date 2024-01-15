@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { ActionBar, PrimaryBtn, TableProvider } from "../../components";
+import { ActionBar, Loader, PrimaryBtn, TableProvider } from "../../components";
 import { searchTermUpdate } from "../../features/email/emailSlice";
 
 const Home = () => {
@@ -13,7 +13,7 @@ const Home = () => {
   const clickHandler = () => {
     dispatch(searchTermUpdate(""));
   };
-
+  console.log(status);
   return (
     <div className="w-screen h-screen pt-[48px] bg-[#F3F3F9] flex">
       <div className="w-[72px] h-full bg-[#391E5A]"></div>
@@ -22,7 +22,11 @@ const Home = () => {
         <div className={`py-[20px] px-[24px]`}>
           <ActionBar />
           {arrList.length > 0 ? (
-            <TableProvider data={arrList} />
+            status === "loading" ? (
+              <Loader />
+            ) : (
+              <TableProvider data={arrList} />
+            )
           ) : (
             <div>
               {status !== "loading" && (
@@ -36,7 +40,7 @@ const Home = () => {
                     </div>
                   ) : (
                     <div>
-                        <p>No schedules found!</p>
+                      <p>No schedules found!</p>
                     </div>
                   )}
                 </div>
