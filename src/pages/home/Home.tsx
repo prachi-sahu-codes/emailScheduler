@@ -13,7 +13,7 @@ const Home = () => {
   const clickHandler = () => {
     dispatch(searchTermUpdate(""));
   };
-  console.log(status);
+ 
   return (
     <div className="w-screen h-screen pt-[48px] bg-[#F3F3F9] flex">
       <div className="w-[72px] h-full bg-[#391E5A]"></div>
