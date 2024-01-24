@@ -18,14 +18,17 @@ const TableRow = ({ schedule }: { schedule: Email }) => {
     e.stopPropagation();
     setOpen(true);
   };
+
   const handleClose = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     setOpen(false);
   };
 
-  const handleDetailOpen = () => {
+  const handleDetailOpen = (e: any) => {
+    e.stopPropagation();
     if (status === "success") setDetailOpen(true);
   };
+
   const handleDetailClose = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     dispatch(emptyDetailSchedule());
@@ -42,34 +45,22 @@ const TableRow = ({ schedule }: { schedule: Email }) => {
       : `Weekly on ${repeat.join(", ")} at ${time}`;
 
   return (
-    <tr className="min-w-[695px] bg-[#fff] text-[14px] border border-[#F3F3F9] hover:bg-[#fbfbff] active:bg-[#fff]">
-      <td
-        className={`${rowStyle} cursor-pointer`}
-        onClick={() => handleDetailOpen()}
-      >
-        {title}
-      </td>
-      <td
-        className={`${rowStyle} cursor-pointer`}
-        onClick={() => handleDetailOpen()}
-      >
+    <tr
+      className="min-w-[695px] bg-[#fff] text-[14px] border border-[#F3F3F9] hover:bg-[#fbfbff] active:bg-[#fff]"
+      onClick={(e) => handleDetailOpen(e)}
+    >
+      <td className={`${rowStyle} cursor-pointer`}>{title}</td>
+      <td className={`${rowStyle} cursor-pointer`}>
         <div className="h-[45px] flex items-center">
           <p className="line-clamp-2">{description}</p>
         </div>
       </td>
+      <td className={`${rowStyle} cursor-pointer`}>{subject}</td>
+      <td className={`${rowStyle} cursor-pointer`}>{scheduleFreq}</td>
       <td
-        className={`${rowStyle} cursor-pointer`}
-        onClick={() => handleDetailOpen()}
+        className={`${rowStyle} text-[16px]`}
+        onClick={(e) => e.stopPropagation()}
       >
-        {subject}
-      </td>
-      <td
-        className={`${rowStyle} cursor-pointer`}
-        onClick={() => handleDetailOpen()}
-      >
-        {scheduleFreq}
-      </td>
-      <td className={`${rowStyle} text-[16px]`}>
         <div className="flex items-center gap-4">
           <div title="Edit" onClick={handleOpen} className="cursor-pointer">
             <MdModeEdit />
@@ -84,14 +75,15 @@ const TableRow = ({ schedule }: { schedule: Email }) => {
             <RiDeleteBin6Line />
           </div>
         </div>
+        {open && (
+          <ScheduleFormModal
+            open={open}
+            handleClose={handleClose}
+            schedule={schedule}
+          />
+        )}
       </td>
-      {open && (
-        <ScheduleFormModal
-          open={open}
-          handleClose={handleClose}
-          schedule={schedule}
-        />
-      )}
+
       {detailOpen && (
         <DetailScheduleModal
           open={detailOpen}

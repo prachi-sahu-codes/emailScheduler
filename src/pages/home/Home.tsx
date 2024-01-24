@@ -1,5 +1,5 @@
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { ActionBar, Loader, PrimaryBtn, TableProvider } from "../../components";
+import { ActionBar, PrimaryBtn, TableProvider } from "../../components";
 import { searchTermUpdate } from "../../features/email/emailSlice";
 
 const Home = () => {
